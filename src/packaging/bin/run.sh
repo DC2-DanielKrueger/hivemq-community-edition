@@ -70,6 +70,7 @@ if hash java 2>/dev/null; then
     else
           echo "HIVEMQ_LOG_FOLDER is $HIVEMQ_LOG_FOLDER"
           echo "HIVEMQ_LOG_FOLDER is $HIVEMQ_LOG_FOLDER"
+          ls -lat $SNAP_DATA
           mkdir -p $HIVEMQ_LOG_FOLDER
           mkdir -p $HIVEMQ_DATA_FOLDER
 

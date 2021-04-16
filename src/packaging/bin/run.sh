@@ -70,7 +70,7 @@ if hash java 2>/dev/null; then
     else
           echo "HIVEMQ_LOG_FOLDER is $HIVEMQ_LOG_FOLDER"
           echo "HIVEMQ_LOG_FOLDER is $HIVEMQ_LOG_FOLDER"
-          sudp mkdir -p $HIVEMQ_LOG_FOLDER
+          sudo mkdir -p $HIVEMQ_LOG_FOLDER
           sudo mkdir -p $HIVEMQ_DATA_FOLDER
           sudo chmod 777 $HIVEMQ_LOG_FOLDER
           sudo chmod 777 $HIVEMQ_DATA_FOLDER

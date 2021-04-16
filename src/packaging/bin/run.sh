@@ -68,34 +68,28 @@ if hash java 2>/dev/null; then
     if [ ! -d "$HIVEMQ_FOLDER" ]; then
         echoerr "ERROR! HiveMQ Home Folder not found."
     else
+          if [ ! -f "$HIVEMQ_FOLDER/bin/hivemq.jar" ]; then
+              echoerr "ERROR! HiveMQ JAR not found."
+              echoerr "$HIVEMQ_FOLDER";
+          else
+              JAVA_OPTS="$JAVA_OPTS -XX:+CrashOnOutOfMemoryError"
+              JAVA_OPTS="$JAVA_OPTS -XX:+HeapDumpOnOutOfMemoryError"
+              HEAPDUMP_PATH_OPT="-XX:HeapDumpPath=$HIVEMQ_FOLDER/heap-dump.hprof"
 
-        if [ ! -w "$HIVEMQ_FOLDER" ]; then
-            echoerr "ERROR! HiveMQ Home Folder Permissions not correct."
-        else
-
-            if [ ! -f "$HIVEMQ_FOLDER/bin/hivemq.jar" ]; then
-                echoerr "ERROR! HiveMQ JAR not found."
-                echoerr "$HIVEMQ_FOLDER";
-            else
-                JAVA_OPTS="$JAVA_OPTS -XX:+CrashOnOutOfMemoryError"
-                JAVA_OPTS="$JAVA_OPTS -XX:+HeapDumpOnOutOfMemoryError"
-                HEAPDUMP_PATH_OPT="-XX:HeapDumpPath=$HIVEMQ_FOLDER/heap-dump.hprof"
-
-                echo "-------------------------------------------------------------------------"
-                echo ""
-                echo "  HIVEMQ_HOME: $HIVEMQ_FOLDER"
-                echo ""
-                echo "  JAVA_OPTS: $JAVA_OPTS"
-                echo ""
-                echo "  JAVA_VERSION: $java_version"
-                echo ""
-                echo "-------------------------------------------------------------------------"
-                echo ""
-                # Run HiveMQ
-                JAR_PATH="$HIVEMQ_FOLDER/bin/hivemq.jar"
-                exec "java" "${HOME_OPT}" "${HEAPDUMP_PATH_OPT}" ${JAVA_OPTS} -jar "${JAR_PATH}"
-            fi
-        fi
+              echo "-------------------------------------------------------------------------"
+              echo ""
+              echo "  HIVEMQ_HOME: $HIVEMQ_FOLDER"
+              echo ""
+              echo "  JAVA_OPTS: $JAVA_OPTS"
+              echo ""
+              echo "  JAVA_VERSION: $java_version"
+              echo ""
+              echo "-------------------------------------------------------------------------"
+              echo ""
+              # Run HiveMQ
+              JAR_PATH="$HIVEMQ_FOLDER/bin/hivemq.jar"
+              exec "java" "${HOME_OPT}" "${HEAPDUMP_PATH_OPT}" ${JAVA_OPTS} -jar "${JAR_PATH}"
+          fi
     fi
 
 else

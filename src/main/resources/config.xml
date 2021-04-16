@@ -25,6 +25,10 @@
         </tcp-listener>
     </listeners>
 
+    <persistence>
+        <mode>in-memory</mode>
+    </persistence>
+
     <anonymous-usage-statistics>
         <enabled>true</enabled>
     </anonymous-usage-statistics>

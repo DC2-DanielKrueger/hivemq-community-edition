@@ -76,6 +76,8 @@ if hash java 2>/dev/null; then
           sudo chmod 777 $HIVEMQ_DATA_FOLDER
           ls -lat $HIVEMQ_LOG_FOLDER
           ls -lat $HIVEMQ_DATA_FOLDER
+          echo "config is:"
+          cat $HIVEMQ_FOLDER/conf/config.xml
 
 
           if [ ! -f "$HIVEMQ_FOLDER/bin/hivemq.jar" ]; then

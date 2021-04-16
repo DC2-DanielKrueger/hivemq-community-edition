@@ -70,8 +70,8 @@ if hash java 2>/dev/null; then
     else
           echo "HIVEMQ_LOG_FOLDER is $HIVEMQ_LOG_FOLDER"
           echo "HIVEMQ_LOG_FOLDER is $HIVEMQ_LOG_FOLDER"
-          mkdir $HIVEMQ_LOG_FOLDER
-          mkdir $HIVEMQ_DATA_FOLDER
+          mkdir -p $HIVEMQ_LOG_FOLDER
+          mkdir -p $HIVEMQ_DATA_FOLDER
 
           if [ ! -f "$HIVEMQ_FOLDER/bin/hivemq.jar" ]; then
               echoerr "ERROR! HiveMQ JAR not found."
